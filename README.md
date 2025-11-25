@@ -89,7 +89,7 @@ CREATE TABLE posts (
 npm start
 # 또는 node app.js
 ```
-서버 실행 후 브라우저 주소창에 http://localhost:3000을 입력하여 접속합니다.
+서버 실행 후 브라우저 주소창에 http://localhost:3000 을 입력하여 접속합니다.
 
 ## 공격 시나리오 예시 (PoC)
 ### 1. SQL Injection (Login Bypass)
@@ -125,6 +125,3 @@ Payload: Upload .html file containing javascript malware
 Result: 업로드된 파일에 직접 접근하여 악성 스크립트 실행 가능
 ```
 
-### 📧 Contact
-Project by: dlwl224
-Role: Security Student
