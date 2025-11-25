@@ -23,14 +23,14 @@ router.get('/write', (req, res) => {
     res.render('post_write');
 });
 
-// 3. 글 작성 요청 처리 (★ Stored XSS 취약점 구간 ★)
+// 3. 글 작성 요청 처리 ( Stored XSS 취약점 구간 )
 router.post('/write', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
 
     const { title, content } = req.body;
     const user_id = req.session.user.id; // 현재 로그인한 사람 ID
 
-    // ☠️ 취약점: <script> 태그를 걸러내지 않고 그대로 저장함
+    //  취약점: <script> 태그를 입력하면 그대로 DB에 저장되어 실행
     const sql = `INSERT INTO posts (title, content, user_id) VALUES ('${title}', '${content}', ${user_id})`;
     
     db.query(sql, (err) => {
@@ -44,7 +44,7 @@ router.post('/write', (req, res) => {
 
 
 // 4. 수정 페이지 보여주기 (GET)
-// ☠️ 취약점: 남의 글 수정 페이지에도 그냥 들어갈 수 있음 (접근 제어 미흡)
+//  취약점: 남의 글 수정 페이지에도 그냥 들어갈 수 있음 (접근 제어 미흡)
 router.get('/edit/:id', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
 
@@ -56,17 +56,17 @@ router.get('/edit/:id', (req, res) => {
     });
 });
 
-// 5. 수정 요청 처리 (POST) - ★ IDOR 핵심 취약점 ★
+// 5. 수정 요청 처리 (POST) - IDOR 핵심 취약점 
 router.post('/edit/:id', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
 
     const { title, content } = req.body;
     const id = req.params.id; // URL에 있는 글 번호
 
-    // ☠️ 취약점: 작성자가 본인인지(user_id) 확인 안 하고, 글 번호(id)만 맞으면 덮어씀!
+    // 취약점: 작성자가 본인인지(user_id) 확인 안 하고, 글 번호(id)만 맞으면 덮어씀
     const sql = `UPDATE posts SET title = '${title}', content = '${content}' WHERE id = ${id}`;
     
-    console.log("🔥 [IDOR 공격 로그] 실행된 쿼리:", sql);
+    console.log(" [IDOR 공격 로그] 실행된 쿼리:", sql);
     db.query(sql, (err) => {
         if (err) {
             console.error(err);

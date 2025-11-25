@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><title>글 수정</title></head>
+
+<head>
+    <title>글 수정</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
 <body>
-    <h1>글 수정하기 (IDOR 취약)</h1>
-    <form action="/post/edit/<%= post.id %>" method="POST">
-        <p>제목: <input type="text" name="title" value="<%= post.title %>" required></p>
-        <p>내용:<br>
-            <textarea name="content" rows="5" cols="30" required><%= post.content %></textarea>
-        </p>
-        <button type="submit">수정 완료</button>
-    </form>
-    <a href="/post">취소</a>
+    <div class="container">
+        <h1>글 수정하기 (IDOR 취약)</h1>
+        <form action="/post/edit/<%= post.id %>" method="POST">
+            <p>제목: <input type="text" name="title" value="<%= post.title %>" required></p>
+            <p>내용:<br>
+                <textarea name="content" rows="5" cols="30" required><%= post.content %></textarea>
+            </p>
+            <button type="submit">수정 완료</button>
+        </form>
+        <a href="/post">수정 취소</a>
+    </div>
 </body>
+
 </html>

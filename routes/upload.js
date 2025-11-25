@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/'); // 'uploads' 폴더에 저장해라
     },
     filename: function (req, file, cb) {
-        // ☠️ 취약점: 사용자가 보낸 파일명(originalname)을 그대로 사용함
+        // 취약점: 사용자가 보낸 파일명(originalname)을 그대로 사용함
         // 해커가 "hack.html"로 보내면 그대로 저장되어 실행 가능해짐
         cb(null, file.originalname);
     }

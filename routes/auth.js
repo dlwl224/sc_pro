@@ -36,7 +36,7 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    // ☠️ 취약한 코드: 입력값을 검증 없이 쿼리에 연결함
+    //  취약한 코드: 입력값을 검증 없이 쿼리에 연결함
     // 해커가 아이디에 ' OR '1'='1 을 넣으면 비밀번호 없이 뚫림
     const sql = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
 
@@ -47,7 +47,7 @@ router.post('/login', (req, res) => {
 
         // 결과가 1개라도 있으면 로그인 성공!
         if (results.length > 0) {
-            // 세션에 유저 정보 저장 (로그인 도장 찍기)
+            // 세션에 유저 정보 저장 
             req.session.user = results[0];
             res.send(`<script>alert('로그인 성공! 환영합니다.'); location.href='/';</script>`);
         } else {
