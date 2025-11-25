@@ -36,13 +36,14 @@ OWASP Top 10의 주요 취약점들을 직접 구현하였으며, 공격 시나�
 ```bash
 git clone [https://github.com/dlwl224/sc_pro.git](https://github.com/dlwl224/sc_pro.git)
 cd sc_pro
+```
 
 ### 2. 의존성 설치
 프로젝트 실행에 필요한 라이브러리(Express, MySQL2, EJS 등)를 설치합니다.
 ```bash
 npm install
 ```
-3. 환경 변수 설정 (.env)
+### 3. 환경 변수 설정 (.env)
 보안을 위해 DB 접속 정보는 환경 변수로 관리합니다. 프로젝트 루트 경로(최상위 폴더)에 .env 파일을 직접 생성하고, 아래 내용을 복사해 본인의 DB 정보에 맞게 수정하여 입력해주세요.
 
 ```sql
@@ -54,7 +55,7 @@ DB_NAME=security_app
 ```
 주의: DB_PASS 부분에는 본인의 실제 MySQL 비밀번호를 입력해야 합니다.
 
-4. 데이터베이스 세팅 (MySQL)
+### 4. 데이터베이스 세팅 (MySQL)
 MySQL Workbench 또는 터미널에서 아래 SQL 쿼리를 실행하여 데이터베이스와 테이블을 생성합니다.
 
 ```sql
@@ -80,7 +81,7 @@ CREATE TABLE posts (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
-5. 서버 실행
+### 5. 서버 실행
 아래 명령어로 서버를 실행합니다.
 
 ```bash
@@ -90,36 +91,40 @@ npm start
 ```
 서버 실행 후 브라우저 주소창에 http://localhost:3000을 입력하여 접속합니다.
 
-📝 공격 시나리오 예시 (PoC)
-1. SQL Injection (Login Bypass)
+## 공격 시나리오 예시 (PoC)
+### 1. SQL Injection (Login Bypass)
+```bash
 Method: Login Form
 
 Payload: ' OR '1'='1' #
 
 Result: 비밀번호 검증을 무시하고 관리자 계정으로 로그인 성공
-
-2. Stored XSS
+```
+### 2. Stored XSS
+```bash
 Method: Post Write (게시글 작성)
 
 Payload: <script>alert(document.cookie)</script>
 
 Result: 게시글 열람 시 방문자의 세션 쿠키 탈취 팝업 발생
-
-3. IDOR (Insecure Direct Object References)
+```
+### 3. IDOR (Insecure Direct Object References)
+```bash
 Method: Post Edit (게시글 수정)
 
 Scenario: 게시글 수정 페이지 URL의 ID 파라미터를 변조 (/post/edit/2 -> /post/edit/1)
 
 Result: 본인이 작성하지 않은 타인의 게시글을 수정 가능
-
-4. File Upload (Webshell)
+```
+### 4. File Upload (Webshell)
+```bash
 Method: File Upload Page
 
 Payload: Upload .html file containing javascript malware
 
 Result: 업로드된 파일에 직접 접근하여 악성 스크립트 실행 가능
+```
 
-📧 Contact
+### 📧 Contact
 Project by: dlwl224
-
 Role: Security Student
