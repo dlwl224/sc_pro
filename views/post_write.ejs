@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>글쓰기</title></head>
+<body>
+    <h1>글 작성하기</h1>
+    <form action="/post/write" method="POST">
+        <p>제목: <input type="text" name="title" required></p>
+        <p>내용:<br>
+            <textarea name="content" rows="5" cols="30" required></textarea>
+        </p>
+        <button type="submit">등록</button>
+    </form>
+    <a href="/post">취소</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# .gitignore
+
+# 1. 라이브러리 폴더 
+node_modules/
+
+# 2. 업로드된 해킹 파일들 
+uploads/*
+!uploads/.gitkeep
+
+# 3. 환경변수나 시스템 파일
+.DS_Store
+Thumbs.db
+.env

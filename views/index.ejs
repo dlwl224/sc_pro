@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>취약한 웹앱</title>
+</head>
+<body>
+    <h1>☠️ Welcome to Vulnerable App ☠️</h1>
+    <hr>
+    <% if (user) { %>
+        <h3>반갑습니다, <%= user.username %>님!</h3>
+        <a href="/post">게시판 가기</a> | 
+        <a href="/auth/logout">로그아웃</a>
+    <% } else { %>
+        <a href="/auth/login">로그인</a> | 
+        <a href="/auth/register">회원가입</a>
+    <% } %>
+</body>
+</html>

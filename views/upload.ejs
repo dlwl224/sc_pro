@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>파일 업로드</title></head>
+<body>
+    <h1>📂 파일 업로드 (검증 없음)</h1>
+    <p>이미지 파일만 올려주세요 (라고 했지만 막지는 않음)</p>
+    
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">업로드</button>
+    </form>
+    
+    <hr>
+    <a href="/">홈으로</a>
+</body>
+</html>

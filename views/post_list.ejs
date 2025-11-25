@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>게시판</title></head>
+<body>
+    <h1>📝 자유 게시판 (XSS 취약)</h1>
+    <p>로그인 사용자: <b><%= user.username %></b> | <a href="/auth/logout">로그아웃</a></p>
+    <a href="/post/write"><button>새 글 쓰기</button></a>
+    <hr>
+    
+    <% posts.forEach(post => { %>
+        <div style="border:1px solid #ccc; padding:10px; margin:5px;">
+            <h3>제목: <%= post.title %></h3>
+            <p>내용: <%- post.content %></p> 
+            <small>작성자 ID: <%= post.user_id %> | 시간: <%= post.created_at %></small>
+            <br>
+            <a href="/post/edit/<%= post.id %>"><button>수정</button></a>
+        </div>
+    <% }) %>
+    
+    <a href="/">홈으로</a>
+</body>
+</html>

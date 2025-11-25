@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>로그인</title>
+</head>
+<body>
+    <h1>로그인 (SQL Injection 가능)</h1>
+    <form action="/auth/login" method="POST">
+        <p>ID: <input type="text" name="username" placeholder="아이디"></p>
+        <p>PW: <input type="password" name="password" placeholder="비밀번호"></p>
+        <button type="submit">로그인</button>
+    </form>
+    <a href="/auth/register">회원가입하러 가기</a>
+</body>
+</html>
