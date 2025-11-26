@@ -1,5 +1,7 @@
 # Vulnerable Node.js Web App (Security Training)
 
+**[결과 보고서 다운로드 (PDF)](./reports/Vulnerable_App_Pentest_Report_2025.pdf)**
+
 이 프로젝트는 **웹 취약점의 원리를 이해하고 모의해킹 실습을 진행하기 위해 의도적으로 취약하게 제작된 Node.js 웹 애플리케이션**입니다.
 OWASP Top 10의 주요 취약점들을 직접 구현하였으며, 공격 시나리오 검증을 목적으로 합니다.
 
