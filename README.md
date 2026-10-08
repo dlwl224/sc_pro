@@ -269,7 +269,7 @@ CREATE TABLE posts (
 ```bash
 npm start
 ```
-➡️ http://localhost:3000
+➡️ 실행한 컴퓨터의 브라우저에서 `localhost:3000` 로 접속합니다. (배포된 공개 주소가 아니라, 직접 실행했을 때만 열리는 로컬 주소입니다)
 
 ---
 
