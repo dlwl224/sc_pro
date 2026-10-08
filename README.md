@@ -209,7 +209,7 @@ db.query(sql, [title, content, id, req.session.user.id], (err, result) => {
 ## 📁 프로젝트 구조
 
 ```
-sc_pro/
+web-vuln-pentest-lab/
 ├── app.js               # Express 서버 · 세션 · 라우터 설정
 ├── db.js                # MySQL 연결 (.env 사용)
 ├── routes/
@@ -231,8 +231,8 @@ sc_pro/
 
 **1. 설치**
 ```bash
-git clone https://github.com/dlwl224/sc_pro.git
-cd sc_pro
+git clone https://github.com/dlwl224/web-vuln-pentest-lab.git
+cd web-vuln-pentest-lab
 npm install
 ```
 
